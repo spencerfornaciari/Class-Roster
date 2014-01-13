@@ -10,11 +10,23 @@
 
 @interface SFTableViewController ()
 @property (strong, nonatomic) NSArray *studentsArray;
-@property (nonatomic,retain) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSArray *teachersArray;
+
+
+@property (nonatomic,retain) UIRefreshControl *refresh;
 
 @end
 
 @implementation SFTableViewController
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -38,12 +50,20 @@
     NSString *student16 = @"Yair Szarf";
     
     self.studentsArray = [NSArray arrayWithObjects:student1, student2, student3, student4, student5, student6, student7, student8, student9, student10, student11, student12, student13, student14, student15, student16, nil];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSString *teacher1 = @"Brad Johnson";
+    NSString *teacher2 = @"John Clem";
+    
+    self.teachersArray = [NSArray arrayWithObjects:teacher1, teacher2, nil];
+    
+    _refresh = [[UIRefreshControl alloc] init];
+    _refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [_refresh addTarget:self
+                 action:nil
+       forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = _refresh;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,13 +77,38 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionTitle;
+    
+    if (section == 0) {
+        sectionTitle = @"Students";
+        return sectionTitle;
+    }
+    
+    if (section == 1) {
+        sectionTitle = @"Teacher";
+        return sectionTitle;
+    }
+    
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.studentsArray.count;
+    if (section == 0) {
+        return self.studentsArray.count;
+    }
+    
+    if (section == 1) {
+        return self.teachersArray.count;
+    }
+    
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,10 +116,22 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        cell.textLabel.text = [self.studentsArray objectAtIndex:indexPath.row];
+        
+        return cell;
+    }
     
-    return cell;
+    if (indexPath.section == 1) {
+        cell.textLabel.text = [self.teachersArray objectAtIndex:indexPath.row];
+        
+        return cell;
+    }
+    
+    return nil;
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -115,16 +172,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    
+    SFDetailViewController *detailView = segue.destinationViewController;
+    detailView.name = cell.textLabel.text;
+ 
 }
-
- */
 
 @end

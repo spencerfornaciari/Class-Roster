@@ -14,7 +14,6 @@
 		89C308241884898500CB64D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C308231884898500CB64D1 /* main.m */; };
 		89C308281884898500CB64D1 /* SFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C308271884898500CB64D1 /* SFAppDelegate.m */; };
 		89C3082B1884898500CB64D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C308291884898500CB64D1 /* Main.storyboard */; };
-		89C3082E1884898500CB64D1 /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3082D1884898500CB64D1 /* SFViewController.m */; };
 		89C308301884898500CB64D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C3082F1884898500CB64D1 /* Images.xcassets */; };
 		89C308371884898500CB64D1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308361884898500CB64D1 /* XCTest.framework */; };
 		89C308381884898500CB64D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308171884898500CB64D1 /* Foundation.framework */; };
@@ -47,8 +46,6 @@
 		89C308261884898500CB64D1 /* SFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAppDelegate.h; sourceTree = "<group>"; };
 		89C308271884898500CB64D1 /* SFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAppDelegate.m; sourceTree = "<group>"; };
 		89C3082A1884898500CB64D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		89C3082C1884898500CB64D1 /* SFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
-		89C3082D1884898500CB64D1 /* SFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
 		89C3082F1884898500CB64D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		89C308351884898500CB64D1 /* ClassRosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassRosterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C308361884898500CB64D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,8 +122,6 @@
 				89C308261884898500CB64D1 /* SFAppDelegate.h */,
 				89C308271884898500CB64D1 /* SFAppDelegate.m */,
 				89C308291884898500CB64D1 /* Main.storyboard */,
-				89C3082C1884898500CB64D1 /* SFViewController.h */,
-				89C3082D1884898500CB64D1 /* SFViewController.m */,
 				89C3082F1884898500CB64D1 /* Images.xcassets */,
 				89C3081E1884898500CB64D1 /* Supporting Files */,
 			);
@@ -261,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				89C308241884898500CB64D1 /* main.m in Sources */,
-				89C3082E1884898500CB64D1 /* SFViewController.m in Sources */,
 				89C3085418849E1A00CB64D1 /* SFTableViewController.m in Sources */,
 				89C3084E18848FCF00CB64D1 /* SFDetailViewController.m in Sources */,
 				89C308281884898500CB64D1 /* SFAppDelegate.m in Sources */,
