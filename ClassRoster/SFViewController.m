@@ -41,6 +41,12 @@
     
     self.classTableview.delegate = self;
     self.classTableview.dataSource = self;
+    
+    /*
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self action:nil forControlEvents:UIControlEventValueChanged];
+    */
 
 }
 
@@ -58,8 +64,10 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    SFDetailViewController *detailView = segue.destinationViewController;
+    detailView.nameLabel.text = @"Blah";
     
 }
 

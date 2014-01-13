@@ -10,4 +10,7 @@
 
 @interface SFDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+- (IBAction)dismissView:(id)sender;
+
 @end

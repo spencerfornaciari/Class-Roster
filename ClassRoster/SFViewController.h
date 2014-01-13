@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFDetailViewController.h"
 
 @interface SFViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
