@@ -22,7 +22,7 @@
 		89C308411884898500CB64D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89C3083F1884898500CB64D1 /* InfoPlist.strings */; };
 		89C308431884898500CB64D1 /* ClassRosterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C308421884898500CB64D1 /* ClassRosterTests.m */; };
 		89C3084E18848FCF00CB64D1 /* SFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3084D18848FCF00CB64D1 /* SFDetailViewController.m */; };
-		89C3085118849CFF00CB64D1 /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3085018849CFF00CB64D1 /* SFTableViewController.m */; };
+		89C3085418849E1A00CB64D1 /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C3085318849E1A00CB64D1 /* SFTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +57,8 @@
 		89C308421884898500CB64D1 /* ClassRosterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassRosterTests.m; sourceTree = "<group>"; };
 		89C3084C18848FCF00CB64D1 /* SFDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFDetailViewController.h; path = ../SFDetailViewController.h; sourceTree = "<group>"; };
 		89C3084D18848FCF00CB64D1 /* SFDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFDetailViewController.m; path = ../SFDetailViewController.m; sourceTree = "<group>"; };
-		89C3084F18849CFF00CB64D1 /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewController.h; sourceTree = "<group>"; };
-		89C3085018849CFF00CB64D1 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
+		89C3085218849E1A00CB64D1 /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTableViewController.h; path = ../SFTableViewController.h; sourceTree = "<group>"; };
+		89C3085318849E1A00CB64D1 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTableViewController.m; path = ../SFTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,13 +118,13 @@
 		89C3081D1884898500CB64D1 /* ClassRoster */ = {
 			isa = PBXGroup;
 			children = (
+				89C3085218849E1A00CB64D1 /* SFTableViewController.h */,
+				89C3085318849E1A00CB64D1 /* SFTableViewController.m */,
 				89C3084C18848FCF00CB64D1 /* SFDetailViewController.h */,
 				89C3084D18848FCF00CB64D1 /* SFDetailViewController.m */,
 				89C308261884898500CB64D1 /* SFAppDelegate.h */,
 				89C308271884898500CB64D1 /* SFAppDelegate.m */,
 				89C308291884898500CB64D1 /* Main.storyboard */,
-				89C3084F18849CFF00CB64D1 /* SFTableViewController.h */,
-				89C3085018849CFF00CB64D1 /* SFTableViewController.m */,
 				89C3082C1884898500CB64D1 /* SFViewController.h */,
 				89C3082D1884898500CB64D1 /* SFViewController.m */,
 				89C3082F1884898500CB64D1 /* Images.xcassets */,
@@ -262,7 +262,7 @@
 			files = (
 				89C308241884898500CB64D1 /* main.m in Sources */,
 				89C3082E1884898500CB64D1 /* SFViewController.m in Sources */,
-				89C3085118849CFF00CB64D1 /* SFTableViewController.m in Sources */,
+				89C3085418849E1A00CB64D1 /* SFTableViewController.m in Sources */,
 				89C3084E18848FCF00CB64D1 /* SFDetailViewController.m in Sources */,
 				89C308281884898500CB64D1 /* SFAppDelegate.m in Sources */,
 			);
