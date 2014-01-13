@@ -11,6 +11,7 @@
 @interface SFViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *classTableview;
 @property (strong, nonatomic) NSArray *studentsArray;
+@property (nonatomic,retain) UIRefreshControl *refreshControl;
 
 @end
 
@@ -42,11 +43,6 @@
     self.classTableview.delegate = self;
     self.classTableview.dataSource = self;
     
-    /*
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [refresh addTarget:self action:nil forControlEvents:UIControlEventValueChanged];
-    */
 
 }
 
@@ -66,8 +62,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    
     SFDetailViewController *detailView = segue.destinationViewController;
-    detailView.nameLabel.text = @"Blah";
+    
+    detailView.name = cell.textLabel.text;
     
 }
 
