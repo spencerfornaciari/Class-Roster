@@ -1,5 +1,5 @@
 //
-//  SFViewController.h
+//  SFDetailViewController.h
 //  ClassRoster
 //
 //  Created by Spencer Fornaciari on 1/13/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SFViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SFDetailViewController : UIViewController
 
 @end
