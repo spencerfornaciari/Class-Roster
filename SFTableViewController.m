@@ -84,14 +84,19 @@
 {
     NSString *sectionTitle;
     
-    if (section == 0) {
-        sectionTitle = @"Students";
-        return sectionTitle;
-    }
-    
-    if (section == 1) {
-        sectionTitle = @"Teacher";
-        return sectionTitle;
+    switch (section) {
+        case 0:
+            sectionTitle = @"Students";
+            return sectionTitle;
+            break;
+            
+        case 1:
+            sectionTitle = @"Teachers";
+            return sectionTitle;
+            break;
+            
+        default:
+            break;
     }
     
     return nil;
@@ -116,6 +121,21 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.text = [self.studentsArray objectAtIndex:indexPath.row];
+            return cell;
+            break;
+            
+        case 1:
+            cell.textLabel.text = [self.teachersArray objectAtIndex:indexPath.row];
+            return cell;
+            break;
+            
+        default:
+            break;
+    }
+    /*
     if (indexPath.section == 0) {
         cell.textLabel.text = [self.studentsArray objectAtIndex:indexPath.row];
         
@@ -126,7 +146,7 @@
         cell.textLabel.text = [self.teachersArray objectAtIndex:indexPath.row];
         
         return cell;
-    }
+    }*/
     
     return nil;
 }

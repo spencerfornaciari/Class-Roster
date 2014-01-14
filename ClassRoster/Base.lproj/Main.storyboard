@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Table View Controller - Code Fellows Class Roster-->
         <scene sceneID="4mT-Ly-t9j">
             <objects>
                 <tableViewController id="ohV-Li-ctg" customClass="SFTableViewController" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="ohV-Li-ctg" id="UPw-KX-HzT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EVc-TD-6kD"/>
+                    <navigationItem key="navigationItem" title="Code Fellows Class Roster" id="EVc-TD-6kD"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ad-mI-0v0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,26 +49,21 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vu6-EX-kZj">
-                                <rect key="frame" x="20" y="213" width="280" height="21"/>
+                                <rect key="frame" x="20" y="87" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiS-IF-RHx">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRv-Yx-vq5">
+                                <rect key="frame" x="40" y="116" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissView:" destination="KKB-Yg-WNX" eventType="touchUpInside" id="pYe-Fb-leI"/>
-                                </connections>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="classImage" destination="JRv-Yx-vq5" id="377-r7-tFk"/>
                         <outlet property="nameLabel" destination="Vu6-EX-kZj" id="idG-pv-40f"/>
                     </connections>
                 </viewController>
