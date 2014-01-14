@@ -19,15 +19,6 @@
 
 @implementation SFTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -92,7 +83,7 @@
             break;
             
         case 1:
-            sectionTitle = @"Teachers";
+            sectionTitle = @"Instructors";
             return sectionTitle;
             break;
             
