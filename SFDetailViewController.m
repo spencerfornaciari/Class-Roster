@@ -18,9 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    self.nameLabel.text = self.name;
-    
+        
     //Random kitten generator
     //NSUInteger width = arc4random_uniform(140) + 200;
     //NSUInteger length = arc4random_uniform(140) + 200;

@@ -51,8 +51,9 @@
     
     self.studentsArray = [NSArray arrayWithObjects:student1, student2, student3, student4, student5, student6, student7, student8, student9, student10, student11, student12, student13, student14, student15, student16, nil];
     
-    NSString *teacher1 = @"Brad Johnson";
-    NSString *teacher2 = @"John Clem";
+    NSString *teacher1 = @"John Clem";
+    NSString *teacher2 = @"Brad Johnson";
+
     
     self.teachersArray = [NSArray arrayWithObjects:teacher1, teacher2, nil];
     
@@ -201,7 +202,7 @@
     UITableViewCell *cell = (UITableViewCell *)sender;
     
     SFDetailViewController *detailView = segue.destinationViewController;
-    detailView.name = cell.textLabel.text;
+    detailView.title = cell.textLabel.text;
  
 }
 
