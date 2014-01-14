@@ -30,7 +30,13 @@
                             <outlet property="delegate" destination="ohV-Li-ctg" id="UPw-KX-HzT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Code Fellows Class Roster" id="EVc-TD-6kD"/>
+                    <navigationItem key="navigationItem" title="Code Fellows Class Roster" id="EVc-TD-6kD">
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="3lo-Sd-vi3">
+                            <connections>
+                                <action selector="sortNames:" destination="ohV-Li-ctg" id="0rO-kW-THI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ad-mI-0v0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

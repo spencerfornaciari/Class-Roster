@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSMutableArray *originalArray;
 @property (strong, nonatomic) NSArray *teachersArray;
 
-
 @property (nonatomic,retain) UIRefreshControl *refresh;
 
 @end
@@ -110,18 +109,6 @@
         default:
             break;
     }
-    /*
-    if (indexPath.section == 0) {
-        cell.textLabel.text = [self.studentsArray objectAtIndex:indexPath.row];
-        
-        return cell;
-    }
-    
-    if (indexPath.section == 1) {
-        cell.textLabel.text = [self.teachersArray objectAtIndex:indexPath.row];
-        
-        return cell;
-    }*/
     
     return nil;
 }
@@ -178,6 +165,44 @@
     SFDetailViewController *detailView = segue.destinationViewController;
     detailView.title = cell.textLabel.text;
  
+}
+
+#pragma mark - UIActionSheet
+
+- (IBAction)sortNames:(id)sender {
+    
+    //Create the UIAction sheet and display it
+    UIActionSheet *sortOptions = [[UIActionSheet alloc] initWithTitle:@"Sort Options"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:nil otherButtonTitles:@"Students", @"Teachers", nil];
+    
+    [sortOptions showInView:self.view];
+}
+
+// Responses to UIActionSheet selections
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentName" ascending:YES];
+            _studentsArray = [NSMutableArray arrayWithArray:[_studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
+            [self.tableView reloadData];
+        }
+            break;
+            
+        case 1:
+        {
+            NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherName" ascending:YES];
+            _teachersArray = [NSMutableArray arrayWithArray:[_teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
+            [self.tableView reloadData];
+        }
+            break;
+    }
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SFDetailViewController.h"
 
-@interface SFTableViewController : UITableViewController
+@interface SFTableViewController : UITableViewController <UIActionSheetDelegate>
+- (IBAction)sortNames:(id)sender;
 
 @end
