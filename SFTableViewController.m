@@ -7,9 +7,11 @@
 //
 
 #import "SFTableViewController.h"
+#import "StudentModel.h"
 
 @interface SFTableViewController ()
-@property (strong, nonatomic) NSArray *studentsArray;
+@property (strong, nonatomic) NSMutableArray *studentsArray;
+@property (strong, nonatomic) NSMutableArray *originalArray;
 @property (strong, nonatomic) NSArray *teachersArray;
 
 
@@ -23,24 +25,21 @@
 {
     [super viewDidLoad];
     
-    NSString *student1 = @"Nicholas Barnard";
-    NSString *student2 = @"Zuri Biringer";
-    NSString *student3 = @"Chad Colby";
-    NSString *student4 = @"Spencer Fornaciari";
-    NSString *student5 = @"Raghav Haran";
-    NSString *student6 = @"Timothy Hise";
-    NSString *student7 = @"Ivan Lesko";
-    NSString *student8 = @"Richard Lichkus";
-    NSString *student9 = @"Bennett Lin";
-    NSString *student10 = @"Christopher Meehan";
-    NSString *student11 = @"Matt Remick";
-    NSString *student12 = @"Andrew Rodgers";
-    NSString *student13 = @"Jeff Schwab";
-    NSString *student14 = @"Steven Stevenson";
-    NSString *student15 = @"Ivan Storck";
-    NSString *student16 = @"Yair Szarf";
+    _studentsArray = [NSMutableArray new];
     
-    self.studentsArray = [NSArray arrayWithObjects:student1, student2, student3, student4, student5, student6, student7, student8, student9, student10, student11, student12, student13, student14, student15, student16, nil];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
+    _originalArray = [NSMutableArray arrayWithContentsOfFile:path];
+    //NSLog(@"%@", _originalArray);
+    
+    for (NSDictionary *dict in _originalArray)
+    {
+        StudentModel *model = [StudentModel new];
+        model.studentName = dict[@"name"];
+        model.studentTwitter = dict[@"twitter"];
+        model.studentGithub = dict[@"github"];
+        
+        [_studentsArray addObject:model];
+    }
     
     NSString *teacher1 = @"John Clem";
     NSString *teacher2 = @"Brad Johnson";
@@ -98,7 +97,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return self.studentsArray.count;
+        return _studentsArray.count;
     }
     
     if (section == 1) {
@@ -115,7 +114,7 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [self.studentsArray objectAtIndex:indexPath.row];
+            cell.textLabel.text = [[_studentsArray objectAtIndex:indexPath.row] studentName];
             return cell;
             break;
             
