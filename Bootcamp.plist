@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Nicholas Barnard</string>
 		<key>twitter</key>
@@ -11,6 +13,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Zuri Biringer</string>
 		<key>twitter</key>
@@ -19,6 +23,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<false/>
 		<key>name</key>
 		<string>John Clem</string>
 		<key>twitter</key>
@@ -27,6 +33,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Chad Colby</string>
 		<key>twitter</key>
@@ -35,6 +43,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Spencer Fornaciari</string>
 		<key>twitter</key>
@@ -43,6 +53,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Raghav Haran</string>
 		<key>twitter</key>
@@ -51,6 +63,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<false/>
 		<key>name</key>
 		<string>Brad Johnson</string>
 		<key>twitter</key>
@@ -59,6 +73,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Timothy Hise</string>
 		<key>twitter</key>
@@ -67,6 +83,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Ivan Lesko</string>
 		<key>twitter</key>
@@ -75,6 +93,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Richard Lichkus</string>
 		<key>twitter</key>
@@ -83,6 +103,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Christopher Meehan</string>
 		<key>twitter</key>
@@ -91,6 +113,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Matt Remick</string>
 		<key>twitter</key>
@@ -99,6 +123,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Andrew Rodgers</string>
 		<key>twitter</key>
@@ -107,6 +133,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Jeff Schwab</string>
 		<key>twitter</key>
@@ -115,6 +143,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Steven Stevenson</string>
 		<key>twitter</key>
@@ -123,6 +153,8 @@
 		<string></string>
 	</dict>
 	<dict>
+		<key>student</key>
+		<true/>
 		<key>name</key>
 		<string>Yair Szarf</string>
 		<key>twitter</key>

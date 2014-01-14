@@ -7,7 +7,10 @@
 //
 
 #import "SFTableViewController.h"
+#import "SFStudentModelDataController.h"
+#import "SFTeacherModelDataController.h"
 #import "StudentModel.h"
+#import "TeacherModel.h"
 
 @interface SFTableViewController ()
 @property (strong, nonatomic) NSMutableArray *studentsArray;
@@ -25,27 +28,8 @@
 {
     [super viewDidLoad];
     
-    _studentsArray = [NSMutableArray new];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
-    _originalArray = [NSMutableArray arrayWithContentsOfFile:path];
-    //NSLog(@"%@", _originalArray);
-    
-    for (NSDictionary *dict in _originalArray)
-    {
-        StudentModel *model = [StudentModel new];
-        model.studentName = dict[@"name"];
-        model.studentTwitter = dict[@"twitter"];
-        model.studentGithub = dict[@"github"];
-        
-        [_studentsArray addObject:model];
-    }
-    
-    NSString *teacher1 = @"John Clem";
-    NSString *teacher2 = @"Brad Johnson";
-
-    
-    self.teachersArray = [NSArray arrayWithObjects:teacher1, teacher2, nil];
+    _studentsArray = [SFStudentModelDataController populateStudentData];
+    _teachersArray = [SFTeacherModelDataController populateTeacherData];
     
     _refresh = [[UIRefreshControl alloc] init];
     _refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -101,7 +85,7 @@
     }
     
     if (section == 1) {
-        return self.teachersArray.count;
+        return _teachersArray.count;
     }
     
     return 2;
@@ -119,7 +103,7 @@
             break;
             
         case 1:
-            cell.textLabel.text = [self.teachersArray objectAtIndex:indexPath.row];
+            cell.textLabel.text = [[_teachersArray objectAtIndex:indexPath.row] teacherName];
             return cell;
             break;
             

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SFStudentModelDataSource : NSObject
+@interface SFStudentModelDataController : NSObject
+
++ (NSMutableArray *)populateStudentData;
 
 @end
