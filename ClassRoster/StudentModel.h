@@ -11,6 +11,8 @@
 @interface StudentModel : NSObject
 
 @property (nonatomic) NSString *studentName;
+@property (nonatomic) NSString *studentFirstName;
+@property (nonatomic) NSString *studentLastName;
 @property (nonatomic) NSString *studentTwitter;
 @property (nonatomic) NSString *studentGithub;
 @property (nonatomic) UIImage *studentImage;

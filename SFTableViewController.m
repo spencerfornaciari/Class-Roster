@@ -14,10 +14,13 @@
 
 @interface SFTableViewController ()
 @property (strong, nonatomic) NSMutableArray *studentsArray;
-@property (strong, nonatomic) NSMutableArray *originalArray;
-@property (strong, nonatomic) NSArray *teachersArray;
+@property (strong, nonatomic) NSMutableArray *teachersArray;
 
 @property (nonatomic,retain) UIRefreshControl *refresh;
+
+@property (nonatomic) BOOL sortStudents;
+@property (nonatomic) BOOL sortTeachers;
+
 
 @end
 
@@ -27,6 +30,8 @@
 {
     [super viewDidLoad];
     
+    _sortStudents = TRUE;
+    _sortTeachers = TRUE;
     _studentsArray = [SFStudentModelDataController populateStudentData];
     _teachersArray = [SFTeacherModelDataController populateTeacherData];
     
@@ -97,12 +102,14 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [[_studentsArray objectAtIndex:indexPath.row] studentName];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_studentsArray objectAtIndex:indexPath.row] studentFirstName], [[_studentsArray objectAtIndex:indexPath.row] studentLastName]];
             return cell;
             break;
             
         case 1:
-            cell.textLabel.text = [[_teachersArray objectAtIndex:indexPath.row] teacherName];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_teachersArray objectAtIndex:indexPath.row] teacherFirstName], [[_teachersArray objectAtIndex:indexPath.row] teacherLastName]];
+            
+            //[[_teachersArray objectAtIndex:indexPath.row] teacherName];
             return cell;
             break;
             
@@ -183,24 +190,47 @@
 // Responses to UIActionSheet selections
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
-    
     switch (buttonIndex)
     {
         case 0:
         {
-            NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentName" ascending:YES];
-            _studentsArray = [NSMutableArray arrayWithArray:[_studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
-            [self.tableView reloadData];
+            {
+                if (_sortStudents){
+                    NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentFirstName" ascending:YES];
+                    _studentsArray = [NSMutableArray arrayWithArray:[_studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                    
+                    _sortStudents = FALSE;
+                    
+                    [self.tableView reloadData];
+                } else {
+                    NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentLastName" ascending:YES];
+                    _studentsArray = [NSMutableArray arrayWithArray:[_studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                    
+                    _sortStudents = TRUE;
+                    [self.tableView reloadData];
+                }
+            }
         }
             break;
             
         case 1:
         {
-            NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherName" ascending:YES];
-            _teachersArray = [NSMutableArray arrayWithArray:[_teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
-            [self.tableView reloadData];
+            if (_sortTeachers){
+                NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherFirstName" ascending:YES];
+                _teachersArray = [NSMutableArray arrayWithArray:[_teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                
+                _sortTeachers = FALSE;
+                
+                [self.tableView reloadData];
+            } else {
+                NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherLastName" ascending:YES];
+                _teachersArray = [NSMutableArray arrayWithArray:[_teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                
+                _sortTeachers = TRUE;
+                [self.tableView reloadData];
+            }
         }
+            
             break;
     }
 }

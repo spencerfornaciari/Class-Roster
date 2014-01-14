@@ -24,6 +24,12 @@
             if ([dict[@"student"]  isEqual: @TRUE]) {
                 
                 StudentModel *model = [StudentModel new];
+                NSString *fullName = dict[@"name"];
+                
+                NSArray *stringComponents = [fullName componentsSeparatedByString:@" "];
+                model.studentFirstName = stringComponents[0];
+                model.studentLastName = stringComponents[1];
+
                 model.studentName = dict[@"name"];
                 model.studentTwitter = dict[@"twitter"];
                 model.studentGithub = dict[@"github"];

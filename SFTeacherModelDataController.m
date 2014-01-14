@@ -23,7 +23,12 @@
         if ([dict[@"student"]  isEqual:@FALSE]) {
             
             TeacherModel *model = [TeacherModel new];
-            model.teacherName = dict[@"name"];
+            NSString *fullName = dict[@"name"];
+            
+            NSArray *stringComponents = [fullName componentsSeparatedByString:@" "];
+            model.teacherFirstName = stringComponents[0];
+            model.teacherLastName = stringComponents[1];
+            
             model.teacherTwitter = dict[@"twitter"];
             model.teacherGithub = dict[@"github"];
             
