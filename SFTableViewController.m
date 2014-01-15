@@ -104,10 +104,22 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UITableViewCell *cell = (UITableViewCell *)sender;
-    
     SFDetailViewController *detailView = segue.destinationViewController;
-    detailView.title = cell.textLabel.text;
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    if (indexPath.section == 0) {
+        detailView.student = self.myModelController.studentsArray[indexPath.row];
+    }
+    
+    if (indexPath.section == 1) {
+        detailView.teacher = self.myModelController.teachersArray[indexPath.row];
+    }
+    
+  //  UITableViewCell *cell = (UITableViewCell *)sender;
+    
+    
+    //detailView.title = cell.textLabel.text;
  
 }
 
@@ -144,6 +156,7 @@
                     self.myModelController.studentsArray = [NSMutableArray arrayWithArray:[self.myModelController.studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
                     
                     _sortStudents = TRUE;
+                    
                     [self.tableView reloadData];
                 }
             }
@@ -164,6 +177,7 @@
                 self.myModelController.teachersArray = [NSMutableArray arrayWithArray:[self.myModelController.teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
                 
                 _sortTeachers = TRUE;
+                
                 [self.tableView reloadData];
             }
         }
