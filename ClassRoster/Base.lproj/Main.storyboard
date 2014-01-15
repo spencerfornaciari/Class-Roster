@@ -31,7 +31,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Code Fellows Class Roster" id="EVc-TD-6kD">
-                        <barButtonItem key="leftBarButtonItem" title="Sort" id="3lo-Sd-vi3">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" id="3lo-Sd-vi3">
                             <connections>
                                 <action selector="sortNames:" destination="ohV-Li-ctg" id="0rO-kW-THI"/>
                             </connections>
@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRv-Yx-vq5">
-                                <rect key="frame" x="40" y="116" width="240" height="240"/>
+                                <rect key="frame" x="40" y="147" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

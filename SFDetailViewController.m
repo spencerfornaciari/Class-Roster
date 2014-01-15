@@ -28,6 +28,8 @@
     
     NSString *kittenURL = [NSString stringWithFormat:@"http://placekitten.com/g/%i/%i", length, width];
     
+    self.classImage.layer.cornerRadius = 120.f;
+    self.classImage.layer.masksToBounds = YES;
     [self.classImage setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:kittenURL]]]];
 }
 

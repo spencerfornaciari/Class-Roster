@@ -15,6 +15,7 @@
 @property (nonatomic) NSString *teacherLastName;
 @property (nonatomic) NSString *teacherTwitter;
 @property (nonatomic) NSString *teacherGithub;
+@property (nonatomic) NSString *teacherImageLocation;
 @property (nonatomic) UIImage *teacherImage;
 
 @end

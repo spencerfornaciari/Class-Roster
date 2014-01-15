@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StudentModel.h"
+#import "TeacherModel.h"
 
 @interface SFDetailViewController : UIViewController
 

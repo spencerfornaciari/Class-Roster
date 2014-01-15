@@ -7,16 +7,15 @@
 //
 
 #import "SFTableViewController.h"
-#import "SFStudentModelDataController.h"
-#import "SFTeacherModelDataController.h"
+#import "SFModelDataController.h"
 #import "StudentModel.h"
 #import "TeacherModel.h"
 
 @interface SFTableViewController ()
-@property (strong, nonatomic) NSMutableArray *studentsArray;
-@property (strong, nonatomic) NSMutableArray *teachersArray;
 
 @property (nonatomic,retain) UIRefreshControl *refresh;
+
+@property (nonatomic, strong) SFModelDataController *myModelController;
 
 @property (nonatomic) BOOL sortStudents;
 @property (nonatomic) BOOL sortTeachers;
@@ -32,8 +31,13 @@
     
     _sortStudents = TRUE;
     _sortTeachers = TRUE;
-    _studentsArray = [SFStudentModelDataController populateStudentData];
-    _teachersArray = [SFTeacherModelDataController populateTeacherData];
+    
+    _myModelController = [SFModelDataController new];
+    
+    [self.myModelController populateStudentData];
+    [self.myModelController populateTeacherData];
+    
+    self.tableView.dataSource = self.myModelController;
     
     _refresh = [[UIRefreshControl alloc] init];
     _refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
@@ -51,74 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 2;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *sectionTitle;
-    
-    switch (section) {
-        case 0:
-            sectionTitle = @"Students";
-            return sectionTitle;
-            break;
-            
-        case 1:
-            sectionTitle = @"Instructors";
-            return sectionTitle;
-            break;
-            
-        default:
-            break;
-    }
-    
-    return nil;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    if (section == 0) {
-        return _studentsArray.count;
-    }
-    
-    if (section == 1) {
-        return _teachersArray.count;
-    }
-    
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    switch (indexPath.section) {
-        case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_studentsArray objectAtIndex:indexPath.row] studentFirstName], [[_studentsArray objectAtIndex:indexPath.row] studentLastName]];
-            return cell;
-            break;
-            
-        case 1:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_teachersArray objectAtIndex:indexPath.row] teacherFirstName], [[_teachersArray objectAtIndex:indexPath.row] teacherLastName]];
-            
-            //[[_teachersArray objectAtIndex:indexPath.row] teacherName];
-            return cell;
-            break;
-            
-        default:
-            break;
-    }
-    
-    return nil;
-}
 
 
 
@@ -197,14 +134,14 @@
             {
                 if (_sortStudents){
                     NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentFirstName" ascending:YES];
-                    _studentsArray = [NSMutableArray arrayWithArray:[_studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                    self.myModelController.studentsArray = [NSMutableArray arrayWithArray:[self.myModelController.studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
                     
                     _sortStudents = FALSE;
                     
                     [self.tableView reloadData];
                 } else {
                     NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentLastName" ascending:YES];
-                    _studentsArray = [NSMutableArray arrayWithArray:[_studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                    self.myModelController.studentsArray = [NSMutableArray arrayWithArray:[self.myModelController.studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
                     
                     _sortStudents = TRUE;
                     [self.tableView reloadData];
@@ -217,14 +154,14 @@
         {
             if (_sortTeachers){
                 NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherFirstName" ascending:YES];
-                _teachersArray = [NSMutableArray arrayWithArray:[_teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                self.myModelController.teachersArray = [NSMutableArray arrayWithArray:[self.myModelController.teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
                 
                 _sortTeachers = FALSE;
                 
                 [self.tableView reloadData];
             } else {
                 NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherLastName" ascending:YES];
-                _teachersArray = [NSMutableArray arrayWithArray:[_teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
+                self.myModelController.teachersArray = [NSMutableArray arrayWithArray:[self.myModelController.teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
                 
                 _sortTeachers = TRUE;
                 [self.tableView reloadData];
