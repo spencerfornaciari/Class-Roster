@@ -76,6 +76,20 @@
     }
 }
 
+#pragma mark - No photo library available
+
+- (void)noPhotoLibraryAvailable
+{
+    UIAlertView *photoWarning = [[UIAlertView alloc] initWithTitle:@"No photo library access"
+                                                            message:@"We can't privledges to access your photo library!"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil, nil];
+    
+    [photoWarning show];
+
+}
+
 #pragma mark - UIAction Sheets
 
 - (IBAction)classPhotoPicker:(id)sender
@@ -100,15 +114,18 @@
         classPicker.delegate = self;
         classPicker.allowsEditing = YES;
     
-    
         if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Camera"])
         {
-            NSLog(@"Camera");
+            classPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
     
         if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Photo Library"])
         {
-            NSLog(@"Photo Library");
+            if (ALAuthorizationStatusRestricted || ALAuthorizationStatusDenied) {
+                [self noPhotoLibraryAvailable];
+            } else {
+                classPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
         }
     
     [self presentViewController:classPicker animated:YES completion:nil];
@@ -130,12 +147,6 @@
 
 
     _student.studentImageLocation = classPNGPath;
-    
-        NSLog(@"%@", _student.studentImageLocation);
-    
-   // NSString *pngPath = [[self docsDirPath] stringByAppendingPathComponent:@"test.png"]
-    
-    //self.student.studentImage = self.classImage.image;
     
     [self dismissViewControllerAnimated:YES
                              completion:nil];
