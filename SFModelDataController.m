@@ -7,12 +7,10 @@
 //
 
 #import "SFModelDataController.h"
-#import "StudentModel.h"
-#import "TeacherModel.h"
 
 @implementation SFModelDataController
 
-- (void)populateStudentData
+/* - (void)populateStudentData
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
     NSMutableArray *originalData = [NSMutableArray arrayWithContentsOfFile:path];
@@ -64,6 +62,56 @@
             
         }
     }
+} */
+
+- (void)populatePersonData
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
+    NSMutableArray *originalData = [NSMutableArray arrayWithContentsOfFile:path];
+    
+   // _personsArray = [NSMutableArray new];
+    
+    _studentsArray = [NSMutableArray new];
+    _teachersArray = [NSMutableArray new];
+    
+    for (NSDictionary *dict in originalData)
+    {
+        if ([dict[@"student"]  isEqual: @TRUE]) {
+            
+            CodeFellowModel *model = [CodeFellowModel new];
+            NSString *fullName = dict[@"name"];
+            
+            NSArray *stringComponents = [fullName componentsSeparatedByString:@" "];
+            model.firstName = stringComponents[0];
+            model.lastName = stringComponents[1];
+            
+            model.fullName = dict[@"name"];
+            model.twitter = dict[@"twitter"];
+            model.github = dict[@"github"];
+            model.isStudent = TRUE;
+            
+            [_studentsArray addObject:model];
+            
+        }
+        else {
+            
+            CodeFellowModel *model = [CodeFellowModel new];
+            NSString *fullName = dict[@"name"];
+            
+            NSArray *stringComponents = [fullName componentsSeparatedByString:@" "];
+            model.firstName = stringComponents[0];
+            model.lastName = stringComponents[1];
+            
+            model.fullName = dict[@"name"];
+            model.twitter = dict[@"twitter"];
+            model.github = dict[@"github"];
+            model.isStudent = FALSE;
+
+            [_teachersArray addObject:model];
+        }
+    }
+    
+    
 }
 
 #pragma mark - Table view data source
@@ -117,13 +165,13 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_studentsArray objectAtIndex:indexPath.row] studentFirstName], [[_studentsArray objectAtIndex:indexPath.row] studentLastName]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_studentsArray objectAtIndex:indexPath.row] firstName], [[_studentsArray objectAtIndex:indexPath.row] lastName]];
             
             return cell;
             break;
             
         case 1:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_teachersArray objectAtIndex:indexPath.row] teacherFirstName], [[_teachersArray objectAtIndex:indexPath.row] teacherLastName]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_teachersArray objectAtIndex:indexPath.row] firstName], [[_teachersArray objectAtIndex:indexPath.row] lastName]];
             
             return cell;
             break;

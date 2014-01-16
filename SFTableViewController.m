@@ -8,8 +8,7 @@
 
 #import "SFTableViewController.h"
 #import "SFModelDataController.h"
-#import "StudentModel.h"
-#import "TeacherModel.h"
+#import "CodeFellowModel.h"
 
 @interface SFTableViewController ()
 
@@ -34,8 +33,7 @@
     
     _myModelController = [SFModelDataController new];
     
-    [self.myModelController populateStudentData];
-    [self.myModelController populateTeacherData];
+    [self.myModelController populatePersonData];
     
     self.tableView.dataSource = self.myModelController;
     
@@ -109,17 +107,12 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     if (indexPath.section == 0) {
-        detailView.student = self.myModelController.studentsArray[indexPath.row];
+        detailView.codeFellow = self.myModelController.studentsArray[indexPath.row];
     }
     
     if (indexPath.section == 1) {
-        detailView.teacher = self.myModelController.teachersArray[indexPath.row];
+        detailView.codeFellow = self.myModelController.teachersArray[indexPath.row];
     }
-    
-  //  UITableViewCell *cell = (UITableViewCell *)sender;
-    
-    
-    //detailView.title = cell.textLabel.text;
  
 }
 
@@ -145,14 +138,14 @@
         {
             {
                 if (_sortStudents){
-                    NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentFirstName" ascending:YES];
+                    NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
                     self.myModelController.studentsArray = [NSMutableArray arrayWithArray:[self.myModelController.studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
                     
                     _sortStudents = FALSE;
                     
                     [self.tableView reloadData];
                 } else {
-                    NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"studentLastName" ascending:YES];
+                    NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
                     self.myModelController.studentsArray = [NSMutableArray arrayWithArray:[self.myModelController.studentsArray sortedArrayUsingDescriptors:@[nameSorter]]];
                     
                     _sortStudents = TRUE;
@@ -166,14 +159,14 @@
         case 1:
         {
             if (_sortTeachers){
-                NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherFirstName" ascending:YES];
+                NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
                 self.myModelController.teachersArray = [NSMutableArray arrayWithArray:[self.myModelController.teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
                 
                 _sortTeachers = FALSE;
                 
                 [self.tableView reloadData];
             } else {
-                NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"teacherLastName" ascending:YES];
+                NSSortDescriptor *nameSorter = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
                 self.myModelController.teachersArray = [NSMutableArray arrayWithArray:[self.myModelController.teachersArray sortedArrayUsingDescriptors:@[nameSorter]]];
                 
                 _sortTeachers = TRUE;

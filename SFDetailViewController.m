@@ -18,32 +18,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-        
-    //Random kitten generator
-    //NSUInteger width = arc4random_uniform(140) + 200;
-    //NSUInteger length = arc4random_uniform(140) + 200;
+
+    self.title = _codeFellow.fullName;
+    self.classImage.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.png",[self documentsDirectoryPath], _codeFellow.fullName]];
+    self.classImage.layer.cornerRadius = 120.f;
+    self.classImage.layer.masksToBounds = YES;
+
     
-    if (_student){
-        self.title = [NSString stringWithFormat:@"%@ %@", _student.studentFirstName, _student.studentLastName];
-        //NSLog(@"%@", _student.studentImageLocation);
-        
-        self.classImage.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.png",[self documentsDirectoryPath], _student.studentName]];
-        self.classImage.layer.cornerRadius = 120.f;
-        self.classImage.layer.masksToBounds = YES;
-    }
-    
-    if (_teacher) {
-        self.title = [NSString stringWithFormat:@"%@ %@", _teacher.teacherFirstName, _teacher.teacherLastName];
-    }
-    
-//    NSUInteger width = 240;
-//    NSUInteger length = 240;
+//    if (_student){
+//        self.title = [NSString stringWithFormat:@"%@ %@", _student.studentFirstName, _student.studentLastName];
+//        //NSLog(@"%@", _student.studentImageLocation);
+//        
+//    }
 //    
-//    NSString *kittenURL = [NSString stringWithFormat:@"http://placekitten.com/g/%i/%i", length, width];
-//    
-//    self.classImage.layer.cornerRadius = 120.f;
-//    self.classImage.layer.masksToBounds = YES;
-//    [self.classImage setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:kittenURL]]]];
+//    if (_teacher) {
+//        self.title = [NSString stringWithFormat:@"%@ %@", _teacher.teacherFirstName, _teacher.teacherLastName];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,11 +133,11 @@
     self.classImage.layer.masksToBounds = YES;
     
     NSData *classPNGData = UIImagePNGRepresentation(editedImage);
-    NSString *classPNGPath = [NSString stringWithFormat:@"%@/%@.png", [self documentsDirectoryPath], self.student.studentName];
+    NSString *classPNGPath = [NSString stringWithFormat:@"%@/%@.png", [self documentsDirectoryPath], self.codeFellow.fullName];
     [classPNGData writeToFile:classPNGPath atomically:YES];
 
 
-    _student.studentImageLocation = classPNGPath;
+    _codeFellow.imageLocation = classPNGPath;
     
     [self dismissViewControllerAnimated:YES
                              completion:nil];

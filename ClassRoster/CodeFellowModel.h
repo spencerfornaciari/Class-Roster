@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PersonModel : NSObject
+@interface CodeFellowModel : NSObject
 
 @property (nonatomic) NSString *fullName;
 @property (nonatomic) NSString *firstName;
@@ -17,5 +17,6 @@
 @property (nonatomic) NSString *github;
 @property (nonatomic) NSString *imageLocation;
 @property (nonatomic) UIImage *profileImage;
+@property (nonatomic) BOOL isStudent;
 
 @end

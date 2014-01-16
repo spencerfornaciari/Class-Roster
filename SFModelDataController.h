@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CodeFellowModel.h"
 
 @interface SFModelDataController : NSObject <UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *studentsArray;
 @property (strong, nonatomic) NSMutableArray *teachersArray;
+@property (strong, nonatomic) NSMutableArray *personsArray;
 
-- (void)populateStudentData;
-- (void)populateTeacherData;
+//- (void)populateStudentData;
+//- (void)populateTeacherData;
+- (void)populatePersonData;
 
 
 @end

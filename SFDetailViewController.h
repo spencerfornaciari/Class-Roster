@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "StudentModel.h"
-#import "TeacherModel.h"
+#import "CodeFellowModel.h"
 
 @interface SFDetailViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
-@property (weak, nonatomic) StudentModel *student;
-@property (weak, nonatomic) TeacherModel *teacher;
+@property (weak, nonatomic) CodeFellowModel *codeFellow;
 
 @property (weak, nonatomic) IBOutlet UIImageView *classImage;
 @property (weak, nonatomic) IBOutlet UITextField *classTwitter;

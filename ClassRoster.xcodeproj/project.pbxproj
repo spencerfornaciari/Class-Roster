@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		891703AA18875075009A2F3A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891703A918875075009A2F3A /* AssetsLibrary.framework */; };
-		891703AD18875662009A2F3A /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891703AC18875662009A2F3A /* PersonModel.m */; };
-		8921D8DA1885DBFB00A1478C /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8D91885DBFB00A1478C /* StudentModel.m */; };
+		891703AD18875662009A2F3A /* CodeFellowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891703AC18875662009A2F3A /* CodeFellowModel.m */; };
 		8921D8DC1885DC3000A1478C /* Bootcamp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8921D8DB1885DC3000A1478C /* Bootcamp.plist */; };
 		8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8DE1885E37200A1478C /* SFModelDataController.m */; };
-		8921D8E21885E95200A1478C /* TeacherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8E11885E95200A1478C /* TeacherModel.m */; };
 		89C308181884898500CB64D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308171884898500CB64D1 /* Foundation.framework */; };
 		89C3081A1884898500CB64D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308191884898500CB64D1 /* CoreGraphics.framework */; };
 		89C3081C1884898500CB64D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C3081B1884898500CB64D1 /* UIKit.framework */; };
@@ -42,15 +40,11 @@
 
 /* Begin PBXFileReference section */
 		891703A918875075009A2F3A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		891703AB18875662009A2F3A /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
-		891703AC18875662009A2F3A /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
-		8921D8D81885DBFB00A1478C /* StudentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentModel.h; sourceTree = "<group>"; };
-		8921D8D91885DBFB00A1478C /* StudentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
+		891703AB18875662009A2F3A /* CodeFellowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeFellowModel.h; sourceTree = "<group>"; };
+		891703AC18875662009A2F3A /* CodeFellowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeFellowModel.m; sourceTree = "<group>"; };
 		8921D8DB1885DC3000A1478C /* Bootcamp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Bootcamp.plist; path = ../Bootcamp.plist; sourceTree = "<group>"; };
 		8921D8DD1885E37200A1478C /* SFModelDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFModelDataController.h; sourceTree = "<group>"; };
 		8921D8DE1885E37200A1478C /* SFModelDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFModelDataController.m; sourceTree = "<group>"; };
-		8921D8E01885E95200A1478C /* TeacherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeacherModel.h; path = ../TeacherModel.h; sourceTree = "<group>"; };
-		8921D8E11885E95200A1478C /* TeacherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TeacherModel.m; path = ../TeacherModel.m; sourceTree = "<group>"; };
 		89C308141884898500CB64D1 /* ClassRoster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassRoster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C308171884898500CB64D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89C308191884898500CB64D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,12 +96,8 @@
 		8917036518870374009A2F3A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				891703AB18875662009A2F3A /* PersonModel.h */,
-				891703AC18875662009A2F3A /* PersonModel.m */,
-				8921D8E01885E95200A1478C /* TeacherModel.h */,
-				8921D8E11885E95200A1478C /* TeacherModel.m */,
-				8921D8D81885DBFB00A1478C /* StudentModel.h */,
-				8921D8D91885DBFB00A1478C /* StudentModel.m */,
+				891703AB18875662009A2F3A /* CodeFellowModel.h */,
+				891703AC18875662009A2F3A /* CodeFellowModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -308,12 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				891703AD18875662009A2F3A /* PersonModel.m in Sources */,
-				8921D8E21885E95200A1478C /* TeacherModel.m in Sources */,
+				891703AD18875662009A2F3A /* CodeFellowModel.m in Sources */,
 				89C308241884898500CB64D1 /* main.m in Sources */,
 				8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */,
 				89C3085418849E1A00CB64D1 /* SFTableViewController.m in Sources */,
-				8921D8DA1885DBFB00A1478C /* StudentModel.m in Sources */,
 				89C3084E18848FCF00CB64D1 /* SFDetailViewController.m in Sources */,
 				89C308281884898500CB64D1 /* SFAppDelegate.m in Sources */,
 			);
