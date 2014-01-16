@@ -121,7 +121,8 @@
     
         if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Photo Library"])
         {
-            if (ALAuthorizationStatusRestricted || ALAuthorizationStatusDenied) {
+            ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
+            if (authStatus == ALAuthorizationStatusRestricted || authStatus == ALAuthorizationStatusDenied) {
                 [self noPhotoLibraryAvailable];
             } else {
                 classPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;

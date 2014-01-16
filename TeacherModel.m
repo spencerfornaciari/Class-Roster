@@ -11,7 +11,6 @@
 @implementation TeacherModel
 
 -(id)initWithCoder:(NSCoder *)decoder
-
 {
     if (self = [super init])
     {

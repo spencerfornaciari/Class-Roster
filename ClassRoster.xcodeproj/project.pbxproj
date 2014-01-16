@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		891703AA18875075009A2F3A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891703A918875075009A2F3A /* AssetsLibrary.framework */; };
+		891703AD18875662009A2F3A /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891703AC18875662009A2F3A /* PersonModel.m */; };
 		8921D8DA1885DBFB00A1478C /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8D91885DBFB00A1478C /* StudentModel.m */; };
 		8921D8DC1885DC3000A1478C /* Bootcamp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8921D8DB1885DC3000A1478C /* Bootcamp.plist */; };
 		8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8DE1885E37200A1478C /* SFModelDataController.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		891703A918875075009A2F3A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		891703AB18875662009A2F3A /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
+		891703AC18875662009A2F3A /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		8921D8D81885DBFB00A1478C /* StudentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentModel.h; sourceTree = "<group>"; };
 		8921D8D91885DBFB00A1478C /* StudentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
 		8921D8DB1885DC3000A1478C /* Bootcamp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Bootcamp.plist; path = ../Bootcamp.plist; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 		8917036518870374009A2F3A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				891703AB18875662009A2F3A /* PersonModel.h */,
+				891703AC18875662009A2F3A /* PersonModel.m */,
 				8921D8E01885E95200A1478C /* TeacherModel.h */,
 				8921D8E11885E95200A1478C /* TeacherModel.m */,
 				8921D8D81885DBFB00A1478C /* StudentModel.h */,
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				891703AD18875662009A2F3A /* PersonModel.m in Sources */,
 				8921D8E21885E95200A1478C /* TeacherModel.m in Sources */,
 				89C308241884898500CB64D1 /* main.m in Sources */,
 				8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */,
