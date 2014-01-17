@@ -113,6 +113,8 @@
     if (indexPath.section == 1) {
         detailView.codeFellow = self.myModelController.teachersArray[indexPath.row];
     }
+    
+    detailView.view.backgroundColor = [UIColor whiteColor];
  
 }
 

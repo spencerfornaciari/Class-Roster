@@ -56,11 +56,13 @@
     [_codeFellowScrollView addSubview:self.setButton];
     [_codeFellowScrollView addSubview:self.codeFellowTwitter];
     [_codeFellowScrollView addSubview:self.codeFellowGitHub];
-    
-    //self.view.backgroundColor = [UIColor redColor]; // _codeFellow.favoriteColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    if (self.codeFellow.favoriteColor)
+    {
+        self.view.backgroundColor = _codeFellow.favoriteColor;
+    }
     
 }
 
