@@ -18,6 +18,19 @@
     
    // _personsArray = [NSMutableArray new];
     
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+
+    NSString *codeFellowsPath = [documentsURL path];
+    codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"Bootcamp.plist"];
+                  //stringByAppendingString:@"/Bootcamp.plist"];
+    
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:codeFellowsPath]) {
+        NSLog(@"No such file");
+    } else {
+        NSLog(@"IT EXISTS");
+    }
+    
     _studentsArray = [NSMutableArray new];
     _teachersArray = [NSMutableArray new];
     
@@ -57,7 +70,15 @@
             [_teachersArray addObject:model];
         }
     }
+
+    [self saveCodeFellowsList];
     
+   // NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSArray *dirContents = [fm contentsOfDirectoryAtPath:[documentsURL path] error:nil];
+    NSLog(@"%@", dirContents);
+    
+    //NSArray *onlyJPGs = [dirContents filteredArrayUsingPredicate:fltr];
     
 }
 
@@ -144,6 +165,16 @@
     }
     
     return nil;
+}
+                                    
+-(void)saveCodeFellowsList
+{
+    NSArray *saveCodeFellows = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"]];
+    
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSString *codeFellowPListPath = [NSString stringWithFormat:@"%@/%@.plist", [documentsURL path], @"Bootcamp"];
+
+    [saveCodeFellows writeToFile:codeFellowPListPath atomically:YES];
 }
 
 @end

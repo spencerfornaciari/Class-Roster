@@ -32,7 +32,7 @@
     self.title = _codeFellow.fullName;
     
     //Test to see if an image is availble or to use the default image
-    NSString *tempString = [NSString stringWithFormat:@"%@/%@.png",[self documentsDirectoryPath], _codeFellow.fullName];
+    NSString *tempString = [NSString stringWithFormat:@"%@/%@.jpg",[self documentsDirectoryPath], _codeFellow.fullName];
     UIImage *image = [UIImage imageWithContentsOfFile:tempString];
     
     if (!image) {
@@ -44,12 +44,13 @@
     self.setButton.layer.cornerRadius = 120.f;
     self.setButton.layer.masksToBounds = YES;
     
+    //Setting Twitter text if it exists
     self.codeFellowTwitter.text = _codeFellow.twitter;
-    self.codeFellowGitHub.text = _codeFellow.github;
-    
     self.codeFellowTwitter.delegate = self;
     self.codeFellow.twitter = self.codeFellowTwitter.text;
     
+    //Setting GitHub text if it exists
+    self.codeFellowGitHub.text = _codeFellow.github;
     self.codeFellowGitHub.delegate = self;
     self.codeFellow.github = self.codeFellowGitHub.text;
     
@@ -145,11 +146,12 @@
     self.setButton.layer.cornerRadius = 120.f;
     self.setButton.layer.masksToBounds = YES;
     
-    NSData *classPNGData = UIImagePNGRepresentation(editedImage);
-    NSString *classPNGPath = [NSString stringWithFormat:@"%@/%@.png", [self documentsDirectoryPath], self.codeFellow.fullName];
-    [classPNGData writeToFile:classPNGPath atomically:YES];
+    NSData *codeFellowJPGData = UIImageJPEGRepresentation(editedImage, 0.5);
+    NSString *codeFellowJPGPath = [NSString stringWithFormat:@"%@/%@.jpg", [self documentsDirectoryPath], self.codeFellow.fullName];
+    [codeFellowJPGData writeToFile:codeFellowJPGPath atomically:YES];
+    
 
-    _codeFellow.imageLocation = classPNGPath;
+    _codeFellow.imageLocation = codeFellowJPGPath;
     _codeFellow.profileImage = editedImage;
     
     [self dismissViewControllerAnimated:YES
@@ -163,22 +165,18 @@
     return [documentsURL path];
 }
 
+#pragma mark - IBAction code
+
 - (IBAction)setTwitter:(id)sender {
     _codeFellow.twitter = _codeFellowTwitter.text;
     [sender resignFirstResponder];
 }
 
 - (IBAction)setGitHub:(id)sender {
-    [sender becomeFirstResponder];
     _codeFellow.github = _codeFellowGitHub.text;
+    [sender resignFirstResponder];
 
-}
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    
-    return YES;
 }
 
 - (IBAction)setImage:(id)sender {
@@ -194,6 +192,16 @@
         [cameraSheet showFromBarButtonItem:sender animated:YES];
     }
 }
+
+#pragma mark - UITextField Delegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - Prepare for segue to modal controller
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

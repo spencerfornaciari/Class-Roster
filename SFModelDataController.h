@@ -15,8 +15,6 @@
 @property (strong, nonatomic) NSMutableArray *teachersArray;
 @property (strong, nonatomic) NSMutableArray *personsArray;
 
-//- (void)populateStudentData;
-//- (void)populateTeacherData;
 - (void)populatePersonData;
 
 

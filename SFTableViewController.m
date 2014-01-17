@@ -28,6 +28,18 @@
 {
     [super viewDidLoad];
     
+    //NSFileManager *fileManager = ![NSFileManager defaultManager];
+    //NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) ! firstObject];
+    
+    char *saves = "abcd";
+    NSData *data = [[NSData alloc] initWithBytes:saves length:4];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"MyFile"];
+    //[data writeToFile:appFile atomically:YES];
+    
+    NSLog(@"%@",documentsDirectory);
+    
     _sortStudents = TRUE;
     _sortTeachers = TRUE;
     

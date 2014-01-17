@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UDv-ox-Ub7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UDv-ox-Ub7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -143,13 +143,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-FY-0Hf">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-FY-0Hf">
                                 <rect key="frame" x="0.0" y="66" width="320" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kr-H1-eCM">
-                                        <rect key="frame" x="48" y="10" width="240" height="240"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kr-H1-eCM">
+                                        <rect key="frame" x="40" y="-40" width="240" height="240"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="240" id="iXf-0s-s8w"/>
+                                        </constraints>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -158,18 +161,24 @@
                                             <action selector="setImage:" destination="KKB-Yg-WNX" eventType="touchUpInside" id="IVb-qK-I9k"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="@twitter" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6LU-ow-bYZ">
-                                        <rect key="frame" x="40" y="264" width="240" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="@twitter" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6LU-ow-bYZ">
+                                        <rect key="frame" x="40" y="218" width="240" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="oWc-ff-etj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="setTwitter:" destination="KKB-Yg-WNX" eventType="editingDidEnd" id="uEc-L2-tte"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="GitHub" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWc-bv-0Iy">
-                                        <rect key="frame" x="40" y="313" width="240" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="GitHub" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWc-bv-0Iy">
+                                        <rect key="frame" x="40" y="256" width="240" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="jLX-2m-fOb"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -178,17 +187,26 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="cWc-bv-0Iy" firstAttribute="trailing" secondItem="6LU-ow-bYZ" secondAttribute="trailing" id="9Ta-SH-D2u"/>
-                                    <constraint firstItem="cWc-bv-0Iy" firstAttribute="top" secondItem="6LU-ow-bYZ" secondAttribute="bottom" constant="19" id="LKe-LU-nm6"/>
-                                    <constraint firstAttribute="bottom" secondItem="cWc-bv-0Iy" secondAttribute="bottom" constant="200" id="SdF-Gp-m1o"/>
-                                    <constraint firstItem="cWc-bv-0Iy" firstAttribute="centerX" secondItem="pkT-FY-0Hf" secondAttribute="centerX" id="e6n-of-UwI"/>
-                                    <constraint firstItem="6LU-ow-bYZ" firstAttribute="leading" secondItem="cWc-bv-0Iy" secondAttribute="leading" id="mPY-Pk-Zb3"/>
+                                    <constraint firstItem="4Kr-H1-eCM" firstAttribute="leading" secondItem="6LU-ow-bYZ" secondAttribute="leading" id="0ug-Bj-yyy"/>
+                                    <constraint firstItem="6LU-ow-bYZ" firstAttribute="trailing" secondItem="cWc-bv-0Iy" secondAttribute="trailing" id="4fz-3U-yjN"/>
+                                    <constraint firstAttribute="bottom" secondItem="cWc-bv-0Iy" secondAttribute="bottom" constant="86" id="6eW-4L-qoU"/>
+                                    <constraint firstItem="6LU-ow-bYZ" firstAttribute="trailing" secondItem="4Kr-H1-eCM" secondAttribute="trailing" id="8aY-Rq-rxN"/>
+                                    <constraint firstItem="4Kr-H1-eCM" firstAttribute="top" secondItem="pkT-FY-0Hf" secondAttribute="top" constant="-40" id="B2G-FS-4wY"/>
+                                    <constraint firstItem="6LU-ow-bYZ" firstAttribute="leading" secondItem="cWc-bv-0Iy" secondAttribute="leading" id="Y0i-Fy-IvE"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Kr-H1-eCM" secondAttribute="trailing" constant="40" id="c1j-ga-teb"/>
+                                    <constraint firstItem="cWc-bv-0Iy" firstAttribute="top" secondItem="6LU-ow-bYZ" secondAttribute="bottom" constant="2" id="p7q-Tf-Kka"/>
+                                    <constraint firstItem="6LU-ow-bYZ" firstAttribute="top" secondItem="4Kr-H1-eCM" secondAttribute="bottom" constant="18" id="psf-Ca-xjy"/>
+                                    <constraint firstItem="4Kr-H1-eCM" firstAttribute="leading" secondItem="pkT-FY-0Hf" secondAttribute="leading" constant="40" id="qdv-1W-eq7"/>
+                                    <constraint firstItem="cWc-bv-0Iy" firstAttribute="centerX" secondItem="pkT-FY-0Hf" secondAttribute="centerX" id="zfK-zJ-x8e"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pkT-FY-0Hf" firstAttribute="top" secondItem="7pq-2t-sq5" secondAttribute="bottom" constant="2" id="Zru-Ef-Xek"/>
+                            <constraint firstAttribute="bottom" secondItem="pkT-FY-0Hf" secondAttribute="bottom" id="Cus-Xn-GBx"/>
+                            <constraint firstItem="pkT-FY-0Hf" firstAttribute="leading" secondItem="YVJ-18-N3R" secondAttribute="leading" id="KyC-46-2kf"/>
+                            <constraint firstItem="pkT-FY-0Hf" firstAttribute="top" secondItem="7pq-2t-sq5" secondAttribute="bottom" constant="2" id="VUM-Tl-20F"/>
+                            <constraint firstAttribute="trailing" secondItem="pkT-FY-0Hf" secondAttribute="trailing" id="r7M-xw-3Jh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oD2-jH-uI3">
