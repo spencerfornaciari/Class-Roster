@@ -53,7 +53,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
 
 
 

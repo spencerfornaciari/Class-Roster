@@ -110,15 +110,31 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    
     switch (indexPath.section) {
         case 0:
             cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_studentsArray objectAtIndex:indexPath.row] firstName], [[_studentsArray objectAtIndex:indexPath.row] lastName]];
+            
+            //cell.backgroundColor = [UIColor redColor];
+            
+            if ([_studentsArray[indexPath.row] favoriteColor]) {
+                cell.backgroundColor = [_studentsArray[indexPath.row] favoriteColor];
+            } else {
+                cell.backgroundColor = [UIColor whiteColor];
+            }
             
             return cell;
             break;
             
         case 1:
             cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_teachersArray objectAtIndex:indexPath.row] firstName], [[_teachersArray objectAtIndex:indexPath.row] lastName]];
+            
+            if ([_teachersArray[indexPath.row] favoriteColor]) {
+                cell.backgroundColor = [_teachersArray[indexPath.row] favoriteColor];
+            }  else {
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
             
             return cell;
             break;

@@ -63,7 +63,6 @@
     {
         self.view.backgroundColor = _codeFellow.favoriteColor;
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
