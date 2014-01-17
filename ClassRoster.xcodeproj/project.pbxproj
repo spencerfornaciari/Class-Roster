@@ -11,6 +11,8 @@
 		891703AD18875662009A2F3A /* CodeFellowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891703AC18875662009A2F3A /* CodeFellowModel.m */; };
 		8921D8DC1885DC3000A1478C /* Bootcamp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8921D8DB1885DC3000A1478C /* Bootcamp.plist */; };
 		8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8DE1885E37200A1478C /* SFModelDataController.m */; };
+		89386F4C1888951F00604839 /* SFColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89386F4B1888951F00604839 /* SFColorViewController.m */; };
+		89386F521888A2F800604839 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89386F511888A2F800604839 /* default.jpg */; };
 		89C308181884898500CB64D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308171884898500CB64D1 /* Foundation.framework */; };
 		89C3081A1884898500CB64D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308191884898500CB64D1 /* CoreGraphics.framework */; };
 		89C3081C1884898500CB64D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C3081B1884898500CB64D1 /* UIKit.framework */; };
@@ -45,6 +47,9 @@
 		8921D8DB1885DC3000A1478C /* Bootcamp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Bootcamp.plist; path = ../Bootcamp.plist; sourceTree = "<group>"; };
 		8921D8DD1885E37200A1478C /* SFModelDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFModelDataController.h; sourceTree = "<group>"; };
 		8921D8DE1885E37200A1478C /* SFModelDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFModelDataController.m; sourceTree = "<group>"; };
+		89386F4A1888951F00604839 /* SFColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFColorViewController.h; path = ClassRoster/SFColorViewController.h; sourceTree = "<group>"; };
+		89386F4B1888951F00604839 /* SFColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFColorViewController.m; path = ClassRoster/SFColorViewController.m; sourceTree = "<group>"; };
+		89386F511888A2F800604839 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		89C308141884898500CB64D1 /* ClassRoster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassRoster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C308171884898500CB64D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89C308191884898500CB64D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +117,8 @@
 		8917036718870386009A2F3A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				89386F4A1888951F00604839 /* SFColorViewController.h */,
+				89386F4B1888951F00604839 /* SFColorViewController.m */,
 				89C3085218849E1A00CB64D1 /* SFTableViewController.h */,
 				89C3085318849E1A00CB64D1 /* SFTableViewController.m */,
 				89C3084C18848FCF00CB64D1 /* SFDetailViewController.h */,
@@ -173,6 +180,7 @@
 		89C3081E1884898500CB64D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				89386F511888A2F800604839 /* default.jpg */,
 				89C3081F1884898500CB64D1 /* ClassRoster-Info.plist */,
 				89C308201884898500CB64D1 /* InfoPlist.strings */,
 				89C308231884898500CB64D1 /* main.m */,
@@ -280,6 +288,7 @@
 				8921D8DC1885DC3000A1478C /* Bootcamp.plist in Resources */,
 				89C308221884898500CB64D1 /* InfoPlist.strings in Resources */,
 				89C3082B1884898500CB64D1 /* Main.storyboard in Resources */,
+				89386F521888A2F800604839 /* default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				891703AD18875662009A2F3A /* CodeFellowModel.m in Sources */,
+				89386F4C1888951F00604839 /* SFColorViewController.m in Sources */,
 				89C308241884898500CB64D1 /* main.m in Sources */,
 				8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */,
 				89C3085418849E1A00CB64D1 /* SFTableViewController.m in Sources */,

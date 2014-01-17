@@ -17,6 +17,7 @@
 @property (nonatomic) NSString *github;
 @property (nonatomic) NSString *imageLocation;
 @property (nonatomic) UIImage *profileImage;
+@property (nonatomic) UIColor *favoriteColor;
 @property (nonatomic) BOOL isStudent;
 
 @end

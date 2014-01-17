@@ -10,59 +10,6 @@
 
 @implementation SFModelDataController
 
-/* - (void)populateStudentData
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
-    NSMutableArray *originalData = [NSMutableArray arrayWithContentsOfFile:path];
-    
-    _studentsArray = [NSMutableArray new];
-    
-    for (NSDictionary *dict in originalData)
-    {
-            if ([dict[@"student"]  isEqual: @TRUE]) {
-                
-                StudentModel *model = [StudentModel new];
-                NSString *fullName = dict[@"name"];
-                
-                NSArray *stringComponents = [fullName componentsSeparatedByString:@" "];
-                model.studentFirstName = stringComponents[0];
-                model.studentLastName = stringComponents[1];
-
-                model.studentName = dict[@"name"];
-                model.studentTwitter = dict[@"twitter"];
-                model.studentGithub = dict[@"github"];
-                
-                [_studentsArray addObject:model];
-            }
-    }
-}
-
-- (void)populateTeacherData
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
-    NSMutableArray *originalData = [NSMutableArray arrayWithContentsOfFile:path];
-    
-    _teachersArray = [NSMutableArray new];
-    
-    for (NSDictionary *dict in originalData)
-    {
-        if ([dict[@"student"]  isEqual:@FALSE]) {
-            
-            TeacherModel *model = [TeacherModel new];
-            NSString *fullName = dict[@"name"];
-            
-            NSArray *stringComponents = [fullName componentsSeparatedByString:@" "];
-            model.teacherFirstName = stringComponents[0];
-            model.teacherLastName = stringComponents[1];
-            
-            model.teacherTwitter = dict[@"twitter"];
-            model.teacherGithub = dict[@"github"];
-            
-            [_teachersArray addObject:model];
-            
-        }
-    }
-} */
 
 - (void)populatePersonData
 {

@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CodeFellowModel.h"
+#import "SFColorViewController.h"
 
-@interface SFDetailViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
+@interface SFDetailViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) CodeFellowModel *codeFellow;
-
-@property (weak, nonatomic) IBOutlet UIImageView *classImage;
-@property (weak, nonatomic) IBOutlet UITextField *classTwitter;
-@property (weak, nonatomic) IBOutlet UITextField *classGitHub;
+@property (weak, nonatomic) IBOutlet UITextField *codeFellowTwitter;
+@property (weak, nonatomic) IBOutlet UITextField *codeFellowGitHub;
 
 
 @end

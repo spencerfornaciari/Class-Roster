@@ -10,6 +10,13 @@
 
 @interface SFDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *codeFellowScrollView;
+- (IBAction)setTwitter:(id)sender;
+- (IBAction)setGitHub:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *setButton;
+- (IBAction)setImage:(id)sender;
+
 @end
 
 @implementation SFDetailViewController
@@ -19,21 +26,42 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    self.title = _codeFellow.fullName;
-    self.classImage.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.png",[self documentsDirectoryPath], _codeFellow.fullName]];
-    self.classImage.layer.cornerRadius = 120.f;
-    self.classImage.layer.masksToBounds = YES;
+    self.codeFellowScrollView.contentSize = CGSizeMake(1000, 1000);
+    self.codeFellowScrollView.delegate = self;
 
+    self.title = _codeFellow.fullName;
     
-//    if (_student){
-//        self.title = [NSString stringWithFormat:@"%@ %@", _student.studentFirstName, _student.studentLastName];
-//        //NSLog(@"%@", _student.studentImageLocation);
-//        
-//    }
-//    
-//    if (_teacher) {
-//        self.title = [NSString stringWithFormat:@"%@ %@", _teacher.teacherFirstName, _teacher.teacherLastName];
-//    }
+    //Test to see if an image is availble or to use the default image
+    NSString *tempString = [NSString stringWithFormat:@"%@/%@.png",[self documentsDirectoryPath], _codeFellow.fullName];
+    UIImage *image = [UIImage imageWithContentsOfFile:tempString];
+    
+    if (!image) {
+        [self.setButton setBackgroundImage:[UIImage imageNamed:@"default.jpg"] forState:UIControlStateNormal];
+    } else {
+        [self.setButton setBackgroundImage:image forState:UIControlStateNormal];
+   }
+
+    self.setButton.layer.cornerRadius = 120.f;
+    self.setButton.layer.masksToBounds = YES;
+    
+    self.codeFellowTwitter.text = _codeFellow.twitter;
+    self.codeFellowGitHub.text = _codeFellow.github;
+    
+    self.codeFellowTwitter.delegate = self;
+    self.codeFellow.twitter = self.codeFellowTwitter.text;
+    
+    self.codeFellowGitHub.delegate = self;
+    self.codeFellow.github = self.codeFellowGitHub.text;
+    
+    [_codeFellowScrollView addSubview:self.setButton];
+    [_codeFellowScrollView addSubview:self.codeFellowTwitter];
+    [_codeFellowScrollView addSubview:self.codeFellowGitHub];
+    
+    //self.view.backgroundColor = [UIColor redColor]; // _codeFellow.favoriteColor;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,22 +110,6 @@
 
 #pragma mark - UIAction Sheets
 
-- (IBAction)classPhotoPicker:(id)sender
-{
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [self showNoCameraAlert];
-    } else {
-        UIActionSheet *cameraSheet = [[UIActionSheet alloc] initWithTitle:@"Profile Photo Picker"
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"Cancel"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Camera", @"Photo Library", nil];
-        
-         [cameraSheet showFromBarButtonItem:sender animated:YES];
-    }
-    
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
         UIImagePickerController *classPicker = [UIImagePickerController new];
@@ -128,16 +140,16 @@
 {
     UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     
-    self.classImage.image = editedImage;
-    self.classImage.layer.cornerRadius = 120.f;
-    self.classImage.layer.masksToBounds = YES;
+    [self.setButton setBackgroundImage:editedImage forState:UIControlStateNormal];
+    self.setButton.layer.cornerRadius = 120.f;
+    self.setButton.layer.masksToBounds = YES;
     
     NSData *classPNGData = UIImagePNGRepresentation(editedImage);
     NSString *classPNGPath = [NSString stringWithFormat:@"%@/%@.png", [self documentsDirectoryPath], self.codeFellow.fullName];
     [classPNGData writeToFile:classPNGPath atomically:YES];
 
-
     _codeFellow.imageLocation = classPNGPath;
+    _codeFellow.profileImage = editedImage;
     
     [self dismissViewControllerAnimated:YES
                              completion:nil];
@@ -149,5 +161,46 @@
     NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return [documentsURL path];
 }
+
+- (IBAction)setTwitter:(id)sender {
+    _codeFellow.twitter = _codeFellowTwitter.text;
+    [sender resignFirstResponder];
+}
+
+- (IBAction)setGitHub:(id)sender {
+    [sender becomeFirstResponder];
+    _codeFellow.github = _codeFellowGitHub.text;
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (IBAction)setImage:(id)sender {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [self showNoCameraAlert];
+    } else {
+        UIActionSheet *cameraSheet = [[UIActionSheet alloc] initWithTitle:@"Profile Photo Picker"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Camera", @"Photo Library", nil];
+        
+        [cameraSheet showFromBarButtonItem:sender animated:YES];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SFColorViewController *colorView = segue.destinationViewController;
+    
+    colorView.colorPicker = _codeFellow;
+    
+}
+
 
 @end

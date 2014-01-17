@@ -17,7 +17,6 @@
         self.fullName = [decoder decodeObjectForKey:@"name"];
         self.twitter = [decoder decodeObjectForKey:@"twitter"];
         self.github = [decoder decodeObjectForKey:@"github"];
-        //self.isStudent = [[decoder decodeObjectForKey:@"student"] boolValue];
         
         return self;
     }
@@ -30,7 +29,6 @@
     [encoder encodeObject:self.fullName forKey:@"name"];
     [encoder encodeObject:self.twitter forKey:@"twitter"];
     [encoder encodeObject:self.github forKey:@"github"];
-    //[encoder encodeObject:[self.isStudent charValue] forKey:@"student"];
 }
 
 @end
