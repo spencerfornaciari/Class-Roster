@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "SFModelDataController.h"
 #import "CodeFellowModel.h"
 #import "SFColorViewController.h"
 

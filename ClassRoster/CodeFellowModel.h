@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CodeFellowModel : NSObject
+@interface CodeFellowModel : NSObject <NSCoding>
 
 @property (nonatomic) NSString *fullName;
 @property (nonatomic) NSString *firstName;

@@ -18,7 +18,9 @@
 
 @property (nonatomic) BOOL sortStudents;
 @property (nonatomic) BOOL sortTeachers;
-
+@property (nonatomic) NSString *codeFellowsPath;
+@property (nonatomic) NSString *studentPath;
+@property (nonatomic) NSString *teacherPath;
 
 @end
 
@@ -28,24 +30,25 @@
 {
     [super viewDidLoad];
     
-    //NSFileManager *fileManager = ![NSFileManager defaultManager];
-    //NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) ! firstObject];
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     
-    char *saves = "abcd";
-    NSData *data = [[NSData alloc] initWithBytes:saves length:4];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"MyFile"];
-    //[data writeToFile:appFile atomically:YES];
+    _codeFellowsPath = [documentsURL path];
+    _studentPath = [_codeFellowsPath stringByAppendingPathComponent:@"students"];
+    _teacherPath = [_codeFellowsPath stringByAppendingPathComponent:@"teachers"];
+
+    _myModelController = [SFModelDataController new];
     
-    NSLog(@"%@",documentsDirectory);
+    BOOL existingFile = [self doesPListExist];
+    
+    if (existingFile) {
+        self.myModelController.studentsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.studentPath];
+        self.myModelController.teachersArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.teacherPath];
+    } else {
+        [self.myModelController populatePersonData];
+    }
     
     _sortStudents = TRUE;
     _sortTeachers = TRUE;
-    
-    _myModelController = [SFModelDataController new];
-    
-    [self.myModelController populatePersonData];
     
     self.tableView.dataSource = self.myModelController;
     
@@ -67,6 +70,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    [NSKeyedArchiver archiveRootObject:self.myModelController.studentsArray toFile:self.studentPath];
+    
+    [NSKeyedArchiver archiveRootObject:self.myModelController.teachersArray toFile:self.teacherPath];
+   
     [self.tableView reloadData];
 }
 
@@ -194,6 +202,24 @@
             
             break;
     }
+}
+
+-(BOOL)doesPListExist
+{
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    
+    NSString *codeFellowsPath = [documentsURL path];
+    codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"students"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:codeFellowsPath]) {
+        NSLog(@"There is no file");
+        return FALSE;
+        
+    } else {
+        NSLog(@"IT EXISTS");
+        return TRUE;
+    }
+
 }
 
 @end

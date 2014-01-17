@@ -13,26 +13,19 @@
 
 - (void)populatePersonData
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"];
-    NSMutableArray *originalData = [NSMutableArray arrayWithContentsOfFile:path];
-    
-   // _personsArray = [NSMutableArray new];
-    
-    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-
-    NSString *codeFellowsPath = [documentsURL path];
-    codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"Bootcamp.plist"];
-                  //stringByAppendingString:@"/Bootcamp.plist"];
-    
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:codeFellowsPath]) {
-        NSLog(@"No such file");
-    } else {
-        NSLog(@"IT EXISTS");
-    }
-    
     _studentsArray = [NSMutableArray new];
     _teachersArray = [NSMutableArray new];
+    
+    NSArray *originalData = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"]];
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSString *codeFellowsPath = [documentsURL path];
+    
+    //NSLog(@"%@", originalData);
+   // codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"Bootcamp.plist"];
+    
+    //[saveCodeFellows writeToFile:codeFellowsPath atomically:YES];
+    
+    //NSMutableArray *originalData = [NSMutableArray arrayWithContentsOfFile:codeFellowsPath];
     
     for (NSDictionary *dict in originalData)
     {
@@ -70,13 +63,25 @@
             [_teachersArray addObject:model];
         }
     }
-
-    [self saveCodeFellowsList];
     
-   // NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
+    NSLog(@"%@", _studentsArray);
+    
+    NSString *studentPath = [codeFellowsPath stringByAppendingPathComponent:@"students"];
+                             
+    NSLog(@"%@", studentPath);
+    
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *dirContents = [fm contentsOfDirectoryAtPath:[documentsURL path] error:nil];
     NSLog(@"%@", dirContents);
+    [NSKeyedArchiver archiveRootObject:self.studentsArray toFile:studentPath];
+    
+    NSString *teacherPath = [codeFellowsPath stringByAppendingPathComponent:@"teachers"];
+    
+    [NSKeyedArchiver archiveRootObject:self.teachersArray toFile:teacherPath];
+   // [self saveCodeFellowsList];
+    
+   // NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
+
     
     //NSArray *onlyJPGs = [dirContents filteredArrayUsingPredicate:fltr];
     
@@ -167,14 +172,26 @@
     return nil;
 }
                                     
--(void)saveCodeFellowsList
-{
-    NSArray *saveCodeFellows = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"]];
-    
-    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSString *codeFellowPListPath = [NSString stringWithFormat:@"%@/%@.plist", [documentsURL path], @"Bootcamp"];
-
-    [saveCodeFellows writeToFile:codeFellowPListPath atomically:YES];
-}
+//- (void)saveCodeFellowsList
+//{
+//    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+//    NSString *codeFellowsPath = [documentsURL path];
+//    codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"Bootcamp.plist"];
+//    
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:codeFellowsPath])
+//    {
+//        NSArray *saveCodeFellows = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"]];
+//        
+//        [saveCodeFellows writeToFile:codeFellowsPath atomically:YES];
+//    } else {
+//        
+//        for (CodeFellowModel *model in _teachersArray)
+//        {
+//            [_studentsArray addObject:model];
+//        }
+//        
+//        [_studentsArray writeToFile:codeFellowsPath atomically:YES];
+//    }
+//}
 
 @end

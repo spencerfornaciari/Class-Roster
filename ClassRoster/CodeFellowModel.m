@@ -15,8 +15,13 @@
     if (self = [super init])
     {
         self.fullName = [decoder decodeObjectForKey:@"name"];
+        self.firstName = [decoder decodeObjectForKey:@"firstName"];
+        self.lastName = [decoder decodeObjectForKey:@"lastName"];
         self.twitter = [decoder decodeObjectForKey:@"twitter"];
         self.github = [decoder decodeObjectForKey:@"github"];
+        self.imageLocation = [decoder decodeObjectForKey:@"imageLocation"];
+        self.favoriteColor = [decoder decodeObjectForKey:@"favoriteColor"];
+        self.isStudent = [[decoder decodeObjectForKey:@"isStudent"] boolValue];
         
         return self;
     }
@@ -24,11 +29,16 @@
     return nil;
 }
 
--(void)encodeWithEncoder:(NSCoder *)encoder
+-(void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.fullName forKey:@"name"];
+    [encoder encodeObject:self.firstName forKey:@"firstName"];
+    [encoder encodeObject:self.lastName forKey:@"lastName"];
     [encoder encodeObject:self.twitter forKey:@"twitter"];
     [encoder encodeObject:self.github forKey:@"github"];
+    [encoder encodeObject:self.imageLocation forKey:@"imageLocation"];
+    [encoder encodeObject:self.favoriteColor forKey:@"favoriteColor"];
+    [encoder encodeBool:self.isStudent forKey:@"isStudent"];
 }
 
 @end
