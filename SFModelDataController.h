@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CodeFellowModel.h"
+#import "SFTableViewCell.h"
 
 @interface SFModelDataController : NSObject <UITableViewDataSource>
 
@@ -15,6 +16,5 @@
 @property (strong, nonatomic) NSMutableArray *teachersArray;
 
 - (void)populatePersonData;
-//- (void)saveCodeFellowsList;
 
 @end

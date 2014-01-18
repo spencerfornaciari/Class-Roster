@@ -13,6 +13,7 @@
 		8921D8DF1885E37200A1478C /* SFModelDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8921D8DE1885E37200A1478C /* SFModelDataController.m */; };
 		89386F4C1888951F00604839 /* SFColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89386F4B1888951F00604839 /* SFColorViewController.m */; };
 		89386F521888A2F800604839 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 89386F511888A2F800604839 /* default.jpg */; };
+		8949F6591889F78C0069E9D4 /* SFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8949F6581889F78C0069E9D4 /* SFTableViewCell.m */; };
 		89C308181884898500CB64D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308171884898500CB64D1 /* Foundation.framework */; };
 		89C3081A1884898500CB64D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C308191884898500CB64D1 /* CoreGraphics.framework */; };
 		89C3081C1884898500CB64D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C3081B1884898500CB64D1 /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 		89386F4A1888951F00604839 /* SFColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFColorViewController.h; path = ClassRoster/SFColorViewController.h; sourceTree = "<group>"; };
 		89386F4B1888951F00604839 /* SFColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFColorViewController.m; path = ClassRoster/SFColorViewController.m; sourceTree = "<group>"; };
 		89386F511888A2F800604839 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
+		8949F6571889F78C0069E9D4 /* SFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTableViewCell.h; path = ../SFTableViewCell.h; sourceTree = "<group>"; };
+		8949F6581889F78C0069E9D4 /* SFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTableViewCell.m; path = ../SFTableViewCell.m; sourceTree = "<group>"; };
 		89C308141884898500CB64D1 /* ClassRoster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassRoster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C308171884898500CB64D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		89C308191884898500CB64D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -110,6 +113,8 @@
 		891703661887037F009A2F3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8949F6571889F78C0069E9D4 /* SFTableViewCell.h */,
+				8949F6581889F78C0069E9D4 /* SFTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8949F6591889F78C0069E9D4 /* SFTableViewCell.m in Sources */,
 				891703AD18875662009A2F3A /* CodeFellowModel.m in Sources */,
 				89386F4C1888951F00604839 /* SFColorViewController.m in Sources */,
 				89C308241884898500CB64D1 /* main.m in Sources */,

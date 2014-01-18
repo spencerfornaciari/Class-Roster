@@ -212,14 +212,10 @@
     codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"students"];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:codeFellowsPath]) {
-        NSLog(@"There is no file");
         return FALSE;
-        
     } else {
-        NSLog(@"IT EXISTS");
         return TRUE;
     }
-
 }
 
 @end

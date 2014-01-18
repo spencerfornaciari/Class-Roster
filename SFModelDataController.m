@@ -43,6 +43,8 @@
             model.github = dict[@"github"];
             model.isStudent = TRUE;
             
+            model.imageLocation = [NSString stringWithFormat:@"%@/%@.jpg",[documentsURL path], model.fullName];
+            
             [_studentsArray addObject:model];
             
         }
@@ -59,6 +61,8 @@
             model.twitter = dict[@"twitter"];
             model.github = dict[@"github"];
             model.isStudent = FALSE;
+            
+            model.imageLocation = [NSString stringWithFormat:@"%@/%@.jpg",[documentsURL path], model.fullName];
 
             [_teachersArray addObject:model];
         }
@@ -73,17 +77,11 @@
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *dirContents = [fm contentsOfDirectoryAtPath:[documentsURL path] error:nil];
     NSLog(@"%@", dirContents);
-    [NSKeyedArchiver archiveRootObject:self.studentsArray toFile:studentPath];
+    [NSKeyedArchiver archiveRootObject:_studentsArray toFile:studentPath];
     
     NSString *teacherPath = [codeFellowsPath stringByAppendingPathComponent:@"teachers"];
     
-    [NSKeyedArchiver archiveRootObject:self.teachersArray toFile:teacherPath];
-   // [self saveCodeFellowsList];
-    
-   // NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
-
-    
-    //NSArray *onlyJPGs = [dirContents filteredArrayUsingPredicate:fltr];
+    [NSKeyedArchiver archiveRootObject:_teachersArray toFile:teacherPath];
     
 }
 
@@ -133,34 +131,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    SFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_studentsArray objectAtIndex:indexPath.row] firstName], [[_studentsArray objectAtIndex:indexPath.row] lastName]];
-            
-            //cell.backgroundColor = [UIColor redColor];
-            
-            if ([_studentsArray[indexPath.row] favoriteColor]) {
-                cell.backgroundColor = [_studentsArray[indexPath.row] favoriteColor];
-            } else {
-                cell.backgroundColor = [UIColor whiteColor];
-            }
+
+            [cell setCodeFellow:_studentsArray[indexPath.row]];
             
             return cell;
             break;
             
         case 1:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [[_teachersArray objectAtIndex:indexPath.row] firstName], [[_teachersArray objectAtIndex:indexPath.row] lastName]];
-            
-            if ([_teachersArray[indexPath.row] favoriteColor]) {
-                cell.backgroundColor = [_teachersArray[indexPath.row] favoriteColor];
-            }  else {
-                cell.backgroundColor = [UIColor whiteColor];
-            }
-            
+            [cell setCodeFellow:_teachersArray[indexPath.row]];
             
             return cell;
             break;
@@ -171,27 +153,5 @@
     
     return nil;
 }
-                                    
-//- (void)saveCodeFellowsList
-//{
-//    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-//    NSString *codeFellowsPath = [documentsURL path];
-//    codeFellowsPath = [codeFellowsPath stringByAppendingPathComponent:@"Bootcamp.plist"];
-//    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:codeFellowsPath])
-//    {
-//        NSArray *saveCodeFellows = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Bootcamp" ofType:@"plist"]];
-//        
-//        [saveCodeFellows writeToFile:codeFellowsPath atomically:YES];
-//    } else {
-//        
-//        for (CodeFellowModel *model in _teachersArray)
-//        {
-//            [_studentsArray addObject:model];
-//        }
-//        
-//        [_studentsArray writeToFile:codeFellowsPath atomically:YES];
-//    }
-//}
 
 @end
